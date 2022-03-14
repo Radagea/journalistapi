@@ -40,8 +40,6 @@
                 'id' => $id,
                 'title' => $title,
                 'abstract' => $abstract,
-                'fulltext' => $fulltext,
-                'fulltextpdf' => $fulltextpdf,
                 'views' => $views,
                 'authors' => $author_array,
                 'publishedtime' => $publishedtime,
