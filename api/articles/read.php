@@ -7,6 +7,7 @@
     include_once '../../config/Database.php';
     include_once '../../models/Articles.php';
     include_once '../../models/articles/Articlesauthor.php';
+    include_once '../../assistant/articlesAuthor.php';
 
     $database = new Database();
     $db = $database->connect();
@@ -21,21 +22,7 @@
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-            $authors = new Articlesauthor($db);
-            $aresult = $authors -> getAuthorsByAID($id);
-            $anum = $aresult -> rowCount();
-            $author_array = array();
-            if ($anum > 0) {
-                while ($arow = $aresult->fetch(PDO::FETCH_ASSOC)) {
-                    $author_item = array(
-                        'id' => $arow['id'],
-                        'firstname' => $arow['firstname'],
-                        'lastname' => $arow['lastname']
-                    );
-                    array_push($author_array,$author_item);
-                }
-            }
-
+            $author_array = getAuthors($id,$db);
             $articles_item = array( 
                 'id' => $id,
                 'title' => $title,
@@ -43,7 +30,8 @@
                 'views' => $views,
                 'authors' => $author_array,
                 'publishedtime' => $publishedtime,
-                'type' => $type
+                'type' => $type,
+                'oa' => $oa
             );
             array_push($articles_arrays,$articles_item);
         }
