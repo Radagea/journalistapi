@@ -31,7 +31,8 @@
                 'authors' => $author_array,
                 'publishedtime' => $publishedtime,
                 'type' => $type,
-                'oa' => $oa
+                'oa' => $oa,
+                'jid' => $jid
             );
             array_push($articles_arrays,$articles_item);
         }

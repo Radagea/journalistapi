@@ -15,6 +15,8 @@
         public $views;
         public $publishedtime;
         public $type;
+        public $oa;
+        public $journalid;
 
 
         //Constructor  
