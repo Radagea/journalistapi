@@ -6,6 +6,7 @@
     //Includes for the neccessary configs/datamodels 
     include_once '../../config/Database.php';
     include_once '../../models/Articles.php';
+    include_once '../../models/Journals.php';
     include_once '../../assistant/articlesAuthor.php';
     include_once '../../assistant/articlesKeywords.php';
 
@@ -24,6 +25,11 @@
             extract($row);
             $author_array = getAuthors($id,$db);
             $keywords_array = getKeywords($id,$db);
+
+            $journal = new Journals($db);
+            $journal->id = $jid;
+            $journal->getJournalName();
+
             $articles_item = array( 
                 'id' => $id,
                 'title' => $title,
@@ -33,7 +39,8 @@
                 'publishedtime' => $publishedtime,
                 'type' => $type,
                 'oa' => $oa,
-                'jid' => $jid
+                'jid' => $jid,
+                'journalNanme' => $journal->name
             );
             array_push($articles_arrays,$articles_item);
         }

@@ -1,0 +1,26 @@
+<?php
+    class Journals {
+        private $conn;
+        private $table = 'journals';
+
+        public $id;
+        public $name;
+
+        public function __construct($db) {
+            $this -> conn = $db;
+        }
+
+        public function getJournalName() {
+            $query = 'SELECT name FROM '.$this->table.' WHERE id = ?';
+
+            $stmt = $this -> conn -> prepare($query);
+            $stmt->bindParam(1,$this->id);
+            $stmt -> execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->name = $row['name'];
+            
+        }
+    }
+?>
