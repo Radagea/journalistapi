@@ -3,9 +3,6 @@
         //DB init
         private $conn;
         private $table = 'article';
-        private $authortable ;
-        private $categorytable = 'articlesCategories';
-        private $keywordstable = 'articlesKeywords';
 
         public $id;
         public $title;
@@ -25,7 +22,15 @@
         }
 
         public function read() {
-            $query = 'SELECT * FROM '.$this->table.' LIMIT 0,10';
+            $query = 'SELECT 
+            id,
+            title,
+            views,
+            publishedtime,
+            type,
+            oa,
+            jid
+            FROM '.$this->table.' LIMIT 0,10';
 
             //Prepare
             $stmt = $this -> conn -> prepare($query);

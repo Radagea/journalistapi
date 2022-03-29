@@ -8,6 +8,7 @@
     include_once '../../models/Articles.php';
     include_once '../../models/articles/Articlesauthor.php';
     include_once '../../assistant/articlesAuthor.php';
+    include_once '../../assistant/articlesKeywords.php';
 
     $database = new Database();
     $db = $database->connect();
@@ -23,12 +24,13 @@
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $author_array = getAuthors($id,$db);
+            $keywords_array = getKeywords($id,$db);
             $articles_item = array( 
                 'id' => $id,
                 'title' => $title,
-                'abstract' => $abstract,
                 'views' => $views,
                 'authors' => $author_array,
+                'keywords' => $keywords_array,
                 'publishedtime' => $publishedtime,
                 'type' => $type,
                 'oa' => $oa,
