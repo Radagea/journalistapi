@@ -39,5 +39,14 @@
 
             return $stmt;
         }
+
+        public function getOaRandom() {
+            $query = 'SELECT * FROM '.$this->table.' WHERE oa = 1 ORDER BY RAND() LIMIT 5';
+            
+            $stmt = $this -> conn -> prepare($query);
+            $stmt -> execute();
+
+            return $stmt;
+        }
     }
 ?>

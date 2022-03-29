@@ -1,6 +1,4 @@
 <?php
-    //Headers 
-    
     header('Content-Type: application/json');
 
     //Includes for the neccessary configs/datamodels 
@@ -14,7 +12,7 @@
 
     $articles = new Articles($db);
 
-    $result = $articles -> read();
+    $result = $articles -> getOaRandom();
     $num = $result -> rowCount();
 
     if ($num > 0) {
@@ -27,12 +25,12 @@
             $articles_item = array( 
                 'id' => $id,
                 'title' => $title,
+                'abstract' => $abstract,
                 'views' => $views,
                 'authors' => $author_array,
                 'keywords' => $keywords_array,
                 'publishedtime' => $publishedtime,
                 'type' => $type,
-                'oa' => $oa,
                 'jid' => $jid
             );
             array_push($articles_arrays,$articles_item);
