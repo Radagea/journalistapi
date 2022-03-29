@@ -10,6 +10,15 @@
             $this -> conn = $db;
         }
 
+        public function read(){
+            $query = 'SELECT id,name FROM '.$this->table;
+
+            $stmt = $this -> conn -> prepare($query);
+            $stmt->execute();
+
+            return $stmt;
+        }
+
         public function getJournalName() {
             $query = 'SELECT name FROM '.$this->table.' WHERE id = ?';
 
