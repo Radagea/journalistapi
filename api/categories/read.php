@@ -13,8 +13,15 @@
 
     $categories = new Categories($db);
 
-    $result = $categories -> read();
+    if (isset($_GET["limit"])) {
+        $limit = $_GET["limit"];
+    } else {
+        $limit = 0;
+    }
+
+    $result = $categories -> read($limit);
     $num = $result -> rowCount();
+
 
     if ($num > 0) {
         $category_array = array();

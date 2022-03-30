@@ -13,7 +13,13 @@
 
     $journals = new Journals($db);
 
-    $result = $journals->read();
+    if (isset($_GET["limit"])) {
+        $limit = $_GET["limit"];
+    } else {
+        $limit = 0;
+    }
+
+    $result = $journals->read($limit);
     $num = $result -> rowCount();
 
     if ($num > 0) {

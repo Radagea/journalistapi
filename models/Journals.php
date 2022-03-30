@@ -10,8 +10,14 @@
             $this -> conn = $db;
         }
 
-        public function read(){
-            $query = 'SELECT id,name FROM '.$this->table;
+        public function read($limit){
+
+            if ($limit > 0) {
+                $query = 'SELECT id,name FROM '.$this->table.' LIMIT 0,'.$limit;
+            } else {
+                $query = 'SELECT id,name FROM '.$this->table;
+            }
+
 
             $stmt = $this -> conn -> prepare($query);
             $stmt->execute();
