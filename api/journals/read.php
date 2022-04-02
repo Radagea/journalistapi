@@ -29,7 +29,8 @@
             extract($row);
             $journal = array(
                 'id' => $id,
-                'name' => $name
+                'name' => $name,
+                'shortDesc' => $shortDesc
             );
             array_push($journals_array,$journal);
         }

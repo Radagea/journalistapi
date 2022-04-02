@@ -13,9 +13,9 @@
         public function read($limit){
 
             if ($limit > 0) {
-                $query = 'SELECT id,name FROM '.$this->table.' LIMIT 0,'.$limit;
+                $query = 'SELECT id,name,shortDesc FROM '.$this->table.' LIMIT 0,'.$limit;
             } else {
-                $query = 'SELECT id,name FROM '.$this->table;
+                $query = 'SELECT id,name,shortDesc FROM '.$this->table;
             }
 
 
