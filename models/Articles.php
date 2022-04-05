@@ -48,5 +48,25 @@
 
             return $stmt;
         }
+
+        public function read_one() {
+            $query = 'SELECT * FROM '.$this->table.' WHERE id=? LIMIT 0,1';
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1,$this->id);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->title = $row['title'];
+            $this->abstract = $row['abstract'];
+            $this->views = $row['views'];
+            $this->publishedtime = $row['publishedtime'];
+            $this->type = $row['type'];
+            $this->oa = $row['oa'];
+            $this->journalid = $row['id'];
+
+
+        }
     }
 ?>
