@@ -5,6 +5,8 @@
 
         public $id;
         public $name;
+        public $shortDesc;
+        public $imgUrl;
 
         public function __construct($db) {
             $this -> conn = $db;
@@ -25,8 +27,8 @@
             return $stmt;
         }
 
-        public function getJournalName() {
-            $query = 'SELECT name FROM '.$this->table.' WHERE id = ?';
+        public function getJournalDatas() {
+            $query = 'SELECT name,shortDesc,imgUrl FROM '.$this->table.' WHERE id = ?';
 
             $stmt = $this -> conn -> prepare($query);
             $stmt->bindParam(1,$this->id);
@@ -35,6 +37,8 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->name = $row['name'];
+            $this->shortDesc = $row['shortDesc'];
+            $this->imgUrl = $row['imgUrl'];
             
         }
     }

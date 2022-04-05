@@ -26,7 +26,7 @@
 
             $journal = new Journals($db);
             $journal->id = $jid;
-            $journal->getJournalName();
+            $journal->getJournalDatas();
 
             $articles_item = array( 
                 'id' => $id,

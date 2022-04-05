@@ -22,7 +22,7 @@
     //Get Journal Name:
     $journal = new Journals($db);
     $journal->id = $article->journalid;
-    $journal->getJournalName();
+    $journal->getJournalDatas();
     //Get Authors
     $author_array = getAuthors($article->id,$db);
     //Get keywords 
@@ -31,10 +31,11 @@
     $article_item = array(
         'id' => $article->id,
         'title' => $article->title,
-        'abstract' => $article->views,
+        'abstract' => $article->abstract,
         'authors' => $author_array,
         'keywords' => $keywords_array,
         'publishedtime' => $article->publishedtime,
+        'views' => $article->views,
         'type' => $article->type,
         'oa' => $article->oa,
         'journalid' => $article->journalid,
