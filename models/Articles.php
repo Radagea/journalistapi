@@ -64,7 +64,7 @@
             $this->publishedtime = $row['publishedtime'];
             $this->type = $row['type'];
             $this->oa = $row['oa'];
-            $this->journalid = $row['id'];
+            $this->journalid = $row['jid'];
 
 
         }

@@ -30,7 +30,8 @@
             $journal = array(
                 'id' => $id,
                 'name' => $name,
-                'shortDesc' => $shortDesc
+                'shortDesc' => $shortDesc,
+                'articleNumber' => $articleNumber
             );
             array_push($journals_array,$journal);
         }

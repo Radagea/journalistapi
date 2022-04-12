@@ -40,6 +40,7 @@
         'oa' => $article->oa,
         'journalid' => $article->journalid,
         'journalName' => $journal->name,
+        'articleNumber' => $journal->articleNumber
     );
 
     echo json_encode($article_item);
