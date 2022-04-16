@@ -65,8 +65,25 @@
             $this->type = $row['type'];
             $this->oa = $row['oa'];
             $this->journalid = $row['jid'];
+        }
+        
+        public function read_from_jid($jid) {
+            $query = 'SELECT 
+            id,
+            title,
+            views,
+            publishedtime,
+            type,
+            oa,
+            jid
+            FROM '.$this->table.' WHERE jid=? LIMIT 0,10';
+            //Prepare
+            $stmt = $this -> conn -> prepare($query);
+            $stmt->bindParam(1,$jid);
 
+            $stmt -> execute();
 
+            return $stmt;
         }
     }
 ?>
