@@ -5,7 +5,10 @@
 
         public $id;
         public $name;
+        public $language;
         public $shortDesc;
+        public $lastArticle;
+        public $startDate;
         public $imgUrl;
         public $articleNumber;
 
@@ -29,7 +32,7 @@
         }
 
         public function getJournalDatas() {
-            $query = 'SELECT name,shortDesc,imgUrl,articleNumber FROM '.$this->table.' WHERE id = ?';
+            $query = 'SELECT name,language,shortDesc,lastArticle,startDate,imgUrl,articleNumber FROM '.$this->table.' WHERE id = ?';
 
             $stmt = $this -> conn -> prepare($query);
             $stmt->bindParam(1,$this->id);
@@ -38,10 +41,12 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->name = $row['name'];
+            $this->language = $row['language'];
             $this->shortDesc = $row['shortDesc'];
+            $this->lastArticle = $row['lastArticle'];
+            $this->startDate = $row['startDate'];
             $this->imgUrl = $row['imgUrl'];
             $this->articleNumber = $row['articleNumber'];
-            
         }
     }
 ?>
