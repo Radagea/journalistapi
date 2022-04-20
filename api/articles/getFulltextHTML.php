@@ -15,12 +15,24 @@ $articleFulltext->articleID = 3; //Temporary for testing
 
 $articleFulltext->get_article();
 
+$sections = explode(';',$articleFulltext->sections);
+$sections_arr = array();
+
+for ($i=0; $i < count($sections) - 1; $i++) { 
+    $exploded = explode(':',$sections[$i]);
+    $sections_element = array(
+        'id' => $exploded[0],
+        'name' => $exploded[1]
+    );
+    array_push($sections_arr,$sections_element);
+}
+
 $articleFulltext_item = array(
     'id' => $articleFulltext->id,
     'articleID' => $articleFulltext->articleID,
     'content' => $articleFulltext->fullText,
     'fullTextPDFLink' => $articleFulltext->fullTextPDFLink,
-    'sections' => $articleFulltext->sections
+    'sections' => $sections_arr
 );
 
 echo json_encode($articleFulltext_item);
