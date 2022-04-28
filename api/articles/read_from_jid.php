@@ -21,8 +21,10 @@
     $result = $articles -> read_from_jid($journal_id);
     $num = $result -> rowCount();
 
+    $articles_arrays = array();
+
     if ($num > 0) {
-        $articles_arrays = array();
+        
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
@@ -49,6 +51,7 @@
             );
             array_push($articles_arrays,$articles_item);
         }
-        echo json_encode($articles_arrays);
+        
     }
+    echo json_encode($articles_arrays);
 ?>
