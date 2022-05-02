@@ -50,6 +50,8 @@ class User {
 
         if ($row > 0) {
             $this->id = $row['id'];
+            $this->firstName = $row['firstName'];
+            $this->lastName = $row['lastName'];
             return true;
         } else {
 
@@ -69,12 +71,15 @@ class User {
 
         //bind data
 
+        $this->password = md5($this->password);
+
         $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':password', md5($this->password));
+        $stmt->bindParam(':password', $this->password);
 
         //Execute
 
         if ($stmt->execute()) {
+            //Will have to send email confirmation
             return true;
         }
 

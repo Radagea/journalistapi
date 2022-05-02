@@ -18,19 +18,22 @@
     $user->email = $data->email;
     $user->password = $data->password;
 
+    $responseData = array();
+
     if ($data->mode === 'login') {
         if ($user->authenticateUser()) {
-            echo json_encode(array('message' => 'Login OK!'));
+            $responseData['message'] = 'Login OK!';
         } else {
-            echo json_encode(array('message' => 'Login is not OK!'));
+            $responseData['message'] = 'Login is not OK!';
         }
     } else if($data->mode === 'register') {
         if ($user->registerUser()) {
-            echo json_encode(array('message' => 'Register OK!'));
+            $responseData['message'] = 'Register OK!';
         } else {
-            echo json_encode(array('message' => 'Register is not OK!'));
+            $responseData['message'] = 'Register is not OK!';
         }
     } else {
-        echo json_encode(array('message' => 'There was a problem with the authenticating'));
+        $responseData['message'] = 'There was a problem with the authenticating';
     }
+    echo json_encode($responseData);
 ?>

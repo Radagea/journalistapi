@@ -9,4 +9,5 @@
     $tokenizer = new Tokenizer($db);
 
     $tokenizer->generateToken(md5("Lgt9G32L"));
+    
 ?>
