@@ -5,8 +5,8 @@
         //DB Connect params
         private $host = 'localhost';
         private $db_name = 'ExpertOpinion';
-        private $username = 'root';
-        private $password = '';
+        private $username = 'journalistapi';
+        private $password = 'Lgt9G32L';
         private $conn;
 
         public function connect() {

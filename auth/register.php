@@ -5,6 +5,7 @@
 
     include_once '../config/Database.php';
     include_once '../models/User.php';
+    include_once './tokenizer.php';
 
     //DB connect init 
 
@@ -22,7 +23,15 @@
 
     if ($data->mode === 'login') {
         if ($user->authenticateUser()) {
+            $tokenizer = new Tokenizer($db);
+            $tokenizer->generateToken($user,$data->rememberMe);
+
+            $tokenizer->databaseFunction();
+
+            $responseData['token'] = $tokenizer->token;
+            $responseData['expiresAt'] = $tokenizer->expiresAt;
             $responseData['message'] = 'Login OK!';
+            
         } else {
             $responseData['message'] = 'Login is not OK!';
         }
