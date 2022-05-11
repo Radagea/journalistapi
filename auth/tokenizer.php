@@ -35,7 +35,7 @@
             } else {
                 $date->add(new DateInterval('P1D'));
             }
-            $this->expiresAt = $date->format('Y-m-d');
+            $this->expiresAt = $date->format('Y-m-d H:i:s');
         }
 
         public function databaseFunction() {
